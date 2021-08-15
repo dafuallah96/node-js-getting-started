@@ -1,44 +1,14 @@
 const express = require('express')
+const app = express()
 const path = require('path')
-const PORT = process.env.PORT || 5000
+const data = require('./contract.json')
+const PORT = process.env.PORT || 3000
 
-express()
-app.get('/data', (req, res) => {
-  res.send(
-    {
-        "agreements": [
-            {
-                "filename": "04_24_1998-WFS.PDF",
-                "agreement name": "Outsourcing Agreement",
-                "agreement date": "January 1 , 1998",
-                "parties": "['Sykes HealthPlan Services , Inc.', 'HealthPlan Services , Inc.']"
-            },
-            {
-                "filename": "05_04_2020-EX-10.3.PDF",
-                "agreement name": "SERVICING AGREEMENT",
-                "agreement date": "April 8 , 2020 ,",
-                "parties": "['CURO RECEIVABLES FINANCE II , LLC', 'CURO MANAGEMENT , LLC']"
-            },
-            {
-                "filename": "060427_WELLSFARGO_MBS_TRUST_YEA.PDF",
-                "agreement name": "Yield Maintenance Agreement",
-                "agreement date": "27 April 2006",
-                "parties": "['Wells Fargo Bank , N.A.', 'Wells Fargo Mortgage Backed Securities 2006 - 6 Trust', 'UBS AG']"
-            },
-            {
-                "filename": "06_11_2020-EX-10.1-JVA.PDF",
-                "agreement name": "JOINT VENTURE AGREEMENT",
-                "agreement date": "20th day of Friday , March 2020",
-                "parties": "['BorrowMoney.com , inc', 'JVLS , LLC dba Vaccines 2Go']"
-            },
-            {
-                "filename": "2020-12-15 H665 OOFFS_657.pdf",
-                "agreement name": "OPTION AGREEMENT FOR FUTURE SHARES",
-                "agreement date": "4 December 2020",
-                "parties": "['INVESTOR LIMITED', 'INVESTMENT LIMITED']"
-            }
-        ]
-    }
-  )
-})
-  .listen(PORT, () => console.log(`Listening on ${ PORT }`))
+app.get("/data", (req,res) => {
+  res.send(data)
+});
+
+
+app.listen(PORT, () => {
+  console.log(`Listen on port http://localhost:${PORT}`)
+});
